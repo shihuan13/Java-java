@@ -1,0 +1,61 @@
+package hh;
+
+abstract class Animal {
+	 String color;
+
+	 abstract void move();
+	}
+
+	//(2)
+	interface Color {
+	 void setColor(String color);
+	}
+
+	//(3)
+	class Dog extends Animal implements Color {
+	 @Override
+	 void move() {
+	     System.out.println("Dog is running");
+	 }
+
+	 @Override
+	 public void setColor(String color) {
+	     this.color = color;
+	 }
+	}
+
+	class Bird extends Animal implements Color {
+	 @Override
+	 void move() {
+	     System.out.println("Bird is flying");
+	 }
+
+	 @Override
+	 public void setColor(String color) {
+	     this.color = color;
+	 }
+	}
+
+public  class AnimalTest {
+	public static void main(String[] args) {
+		Dog dog=new Dog();
+		Bird bird=new Bird();
+		
+		dog.move();
+		bird.move();
+		
+		
+		Animal mydog=dog;
+		Animal mybird=bird;
+		
+		
+		mydog.move();
+		mybird.move();
+		
+		performAction(mydog);
+		performAction(mybird);
+	}
+	public static void performAction(Animal animal) {
+		animal.move();
+	}
+}
